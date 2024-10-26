@@ -83,6 +83,68 @@ export const data: {
     },
 
   ],
-  answers: [],
-  themes: []
+  answers: [
+    {
+      id: 1,
+      code: 1994,
+      theme_id: 1,
+    },
+    {
+      id: 2,
+      code: 212521,
+      theme_id: 1,
+    },
+    {
+      id: 3,
+      code: 25224,
+      theme_id: 1,
+    },
+    {
+      id: 4,
+      code: 653,
+      theme_id: 2,
+    },
+    {
+      id: 5,
+      code: 97452,
+      theme_id: 2,
+    },
+    {
+      id: 6,
+      code: 762369,
+      theme_id: 2,
+    },
+    {
+      id: 7,
+      code: 2,
+      theme_id: 3,
+    },
+    {
+      id: 8,
+      code: 1,
+      theme_id: 3,
+    },
+    {
+      id: 9,
+      code: 3,
+      theme_id: 3,
+    },
+  ],
+  themes: [
+    {
+      id: 1,
+      name: "Le Roi Lion",
+      icon: "👑"
+    },
+    {
+      id: 2,
+      name: "Mulan",
+      icon: "🗡"
+    },
+    {
+      id: 3,
+      name: "L'Âge de Glace'",
+      icon: "🧊"
+    },
+  ]
 }

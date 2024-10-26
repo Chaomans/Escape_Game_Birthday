@@ -16,12 +16,12 @@ export type Question = {
 
 export type Answer = {
   id: number,
-  text: string,
   code: number,
   theme_id: number
 }
 
 export type Theme = {
   id: number,
-  name: string
+  name: string,
+  icon: string
 };
