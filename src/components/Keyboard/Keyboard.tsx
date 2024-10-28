@@ -1,13 +1,17 @@
 import { useState } from "react";
 import Key from "../Key/Key";
 
-const Keyboard = () => {
-  const values = "1234567890✔❌";
+type KeyboardProps = {
+  handleSubmit: (code: number) => void;
+};
 
-  const [currentValue, setCurrentValue] = useState<string>();
+const Keyboard = ({ handleSubmit }: KeyboardProps) => {
+  const values = "1234567890✔❌";
+  const [currentValue, setCurrentValue] = useState<string>("");
 
   const handleKeyPressed = (value: string) => {
-    if (value === "✔") {
+    if (value === "✔" && currentValue) {
+      handleSubmit(parseInt(currentValue));
       setCurrentValue("");
       return;
     }

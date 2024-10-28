@@ -70,7 +70,33 @@ export const data: {
     },
     {
       id: 7,
-      text: "Quels desserts seraient choisis par Scrat ?",
+      text: "Quels dessert serait choisi par Scrat ?",
+      theme_id: 3,
+      isSong: false,
+      isQuizz: true,
+      quizzItems: [
+        {
+          imagePath: "",
+          altText: ""
+        },
+      ]
+    },
+    {
+      id: 8,
+      text: "Quels dessert serait choisi par Scrat ?",
+      theme_id: 3,
+      isSong: false,
+      isQuizz: true,
+      quizzItems: [
+        {
+          imagePath: "",
+          altText: ""
+        },
+      ]
+    },
+    {
+      id: 9,
+      text: "Quels dessert serait choisi par Scrat ?",
       theme_id: 3,
       isSong: false,
       isQuizz: true,

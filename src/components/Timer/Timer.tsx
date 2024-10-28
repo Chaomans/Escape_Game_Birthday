@@ -48,6 +48,7 @@ const Timer = ({ limit }: TimerProps) => {
 
   const onReset = () => {
     localStorage.clear();
+    localStorage.setItem("solvedIDs", "[]");
     clearInterval(timerVar.timer as NodeJS.Timeout);
     setEndTime(0);
     setIsRunning(false);

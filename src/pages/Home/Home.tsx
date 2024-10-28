@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
       {ids.split("").map((id) => (
-        <Link to={"/question/" + id} state={{ background: location }}>
+        <Link to={"/question/" + id} state={{ background: location }} key={id}>
           {`Q${id}`}
         </Link>
       ))}

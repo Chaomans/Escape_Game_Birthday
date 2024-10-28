@@ -8,6 +8,21 @@ export const ProblemModal = () => {
   const { id } = useParams();
   const [problem, setProblem] = useState<Problem>();
   const navigate = useNavigate();
+  const [isSolved, setIsSolved] = useState<boolean>(false);
+
+  const handleSubmit = (code: number) => {
+    if (code === problem?.answer.code) {
+      console.log(`Question ${id} solved`);
+      const solved: string[] =
+        localStorage.getItem("solvedIDs") === null
+          ? []
+          : JSON.parse(localStorage.getItem("solvedIDs") ?? "[]");
+      localStorage.setItem("solvedIDs", JSON.stringify([...solved, id]));
+      setIsSolved(true);
+      return;
+    }
+    console.log("WRONG");
+  };
 
   useEffect(() => {
     if (id) {
@@ -25,6 +40,12 @@ export const ProblemModal = () => {
         answer: newAnswer,
         theme: newTheme,
       });
+      const solved: string =
+        localStorage.getItem("solvedIDs") === null
+          ? ""
+          : JSON.parse(localStorage.getItem("solvedIDs") ?? "");
+      console.log(typeof solved);
+      setIsSolved(solved.includes(id));
     }
   }, [id]);
 
@@ -33,8 +54,12 @@ export const ProblemModal = () => {
       {problem && (
         <div className="problem">
           <p className="question">{problem.question.text}</p>
-          <Keyboard />
-          <button onClick={() => navigate(-1)}>Close</button>
+          {problem.question.isSong &&
+            problem.question.songText?.map((line, ind) => (
+              <p key={ind}>{line}</p>
+            ))}
+          {!isSolved && <Keyboard handleSubmit={handleSubmit} />}
+          <button onClick={() => navigate("/")}>Close</button>
         </div>
       )}
       {!problem && <div className="NotFound">NO</div>}
