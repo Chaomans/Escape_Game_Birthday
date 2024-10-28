@@ -4,7 +4,7 @@ import Key from "../Key/Key";
 const Keyboard = () => {
   const values = "1234567890✔❌";
 
-  const [currentValue, setCurrentValue] = useState<string>("");
+  const [currentValue, setCurrentValue] = useState<string>();
 
   const handleKeyPressed = (value: string) => {
     if (value === "✔") {

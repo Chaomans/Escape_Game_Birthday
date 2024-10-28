@@ -25,3 +25,9 @@ export type Theme = {
   name: string,
   icon: string
 };
+
+export type Problem = {
+  question: Question,
+  answer: Answer,
+  theme: Theme
+}

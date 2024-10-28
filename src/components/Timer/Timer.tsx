@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type TimerProps = {
   limit: number;
@@ -16,11 +16,6 @@ const Timer = ({ limit }: TimerProps) => {
       ? false
       : JSON.parse(localStorage.getItem("isTimerRunning") ?? "false")
   );
-
-  console.table({
-    end: endTime,
-    last: lasted,
-  });
 
   const timerVar: { timer: NodeJS.Timeout | null; last: number } = {
     timer: null,
@@ -59,19 +54,17 @@ const Timer = ({ limit }: TimerProps) => {
     setLasted(0);
   };
 
-  useEffect(() => {
-    if (isRunning) {
-      timerVar.timer = setInterval(() => {
-        const newLasted = endTime - Date.now();
-        if (newLasted <= 0) {
-          clearInterval(timerVar.timer as NodeJS.Timeout);
-          setLasted(0);
-          return;
-        }
-        setLasted(newLasted);
-      }, 1000);
-    }
-  });
+  if (isRunning) {
+    timerVar.timer = setInterval(() => {
+      const newLasted = endTime - Date.now();
+      if (newLasted <= 0) {
+        clearInterval(timerVar.timer as NodeJS.Timeout);
+        setLasted(0);
+        return;
+      }
+      setLasted(newLasted);
+    }, 1000);
+  }
 
   return (
     <div className="timer">
