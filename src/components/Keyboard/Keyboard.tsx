@@ -24,7 +24,11 @@ const Keyboard = ({ handleSubmit }: KeyboardProps) => {
 
   return (
     <div className="keyboard">
-      <input className="display" value={currentValue}></input>
+      <input
+        className="display"
+        value={currentValue}
+        onChange={() => {}}
+      ></input>
       {values.split("").map((v, i) => (
         <Key value={v} key={i} handleKeyPressed={handleKeyPressed} />
       ))}

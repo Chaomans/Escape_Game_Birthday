@@ -76,8 +76,16 @@ export const data: {
       isQuizz: true,
       quizzItems: [
         {
-          imagePath: "",
-          altText: ""
+          imagePath: "cupcake.jpeg",
+          altText: "cupcake"
+        },
+        {
+          imagePath: "charlotte_aux_fraises.jpeg",
+          altText: "charlotte_aux_fraises"
+        },
+        {
+          imagePath: "cannele.jpeg",
+          altText: "cannele"
         },
       ]
     },
@@ -89,8 +97,16 @@ export const data: {
       isQuizz: true,
       quizzItems: [
         {
-          imagePath: "",
-          altText: ""
+          imagePath: "gland.jpeg",
+          altText: "gland"
+        },
+        {
+          imagePath: "opera.jpeg",
+          altText: "opera"
+        },
+        {
+          imagePath: "paris_brest.jpeg",
+          altText: "paris_brest"
         },
       ]
     },
@@ -102,8 +118,16 @@ export const data: {
       isQuizz: true,
       quizzItems: [
         {
-          imagePath: "",
-          altText: ""
+          imagePath: "foret_noire.jpeg",
+          altText: "forêt_noire"
+        },
+        {
+          imagePath: "mousse_au_chocolat.jpeg",
+          altText: "mousse_au_chocolat"
+        },
+        {
+          imagePath: "religieuse.jpeg",
+          altText: "religieuse"
         },
       ]
     },
@@ -142,17 +166,17 @@ export const data: {
     },
     {
       id: 7,
-      code: 2,
+      code: 3,
       theme_id: 3,
     },
     {
       id: 8,
-      code: 1,
+      code: 2,
       theme_id: 3,
     },
     {
       id: 9,
-      code: 3,
+      code: 12,
       theme_id: 3,
     },
   ],

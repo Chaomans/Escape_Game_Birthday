@@ -9,6 +9,7 @@ export const ProblemModal = () => {
   const [problem, setProblem] = useState<Problem>();
   const navigate = useNavigate();
   const [isSolved, setIsSolved] = useState<boolean>(false);
+  const treasuresEvent = new Event("checkTreasures", { cancelable: true });
 
   const handleSubmit = (code: number) => {
     if (code === problem?.answer.code) {
@@ -19,6 +20,7 @@ export const ProblemModal = () => {
           : JSON.parse(localStorage.getItem("solvedIDs") ?? "[]");
       localStorage.setItem("solvedIDs", JSON.stringify([...solved, id]));
       setIsSolved(true);
+      document.dispatchEvent(treasuresEvent);
       return;
     }
     console.log("WRONG");
@@ -44,7 +46,6 @@ export const ProblemModal = () => {
         localStorage.getItem("solvedIDs") === null
           ? ""
           : JSON.parse(localStorage.getItem("solvedIDs") ?? "");
-      console.log(typeof solved);
       setIsSolved(solved.includes(id));
     }
   }, [id]);
@@ -57,6 +58,13 @@ export const ProblemModal = () => {
           {problem.question.isSong &&
             problem.question.songText?.map((line, ind) => (
               <p key={ind}>{line}</p>
+            ))}
+          {problem.question.isQuizz &&
+            problem.question.quizzItems?.map((item, ind) => (
+              <div className="quizzItem">
+                <img src={"/assets/" + item.imagePath} alt={item.altText} />
+                <p>{ind + 1}</p>
+              </div>
             ))}
           {!isSolved && <Keyboard handleSubmit={handleSubmit} />}
           <button onClick={() => navigate("/")}>Close</button>
