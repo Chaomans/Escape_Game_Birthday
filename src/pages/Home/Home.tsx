@@ -39,6 +39,10 @@ const Home = () => {
     return newtreasureOpen;
   };
 
+  const imgPath = import.meta.env.PROD
+    ? "assets/treasure.svg"
+    : "/assets/treasure.svg";
+
   useEffect(() => {
     document.addEventListener("checkTreasures", (e: Event) => {
       e.preventDefault();
@@ -68,7 +72,7 @@ const Home = () => {
         <div className="treasures">
           <img
             className={treasuresOpen[0] ? "open" : ""}
-            src="/assets/treasure.svg"
+            src={imgPath}
             alt="treasure"
             onClick={() =>
               treasuresOpen[0]
@@ -78,7 +82,7 @@ const Home = () => {
           />
           <img
             className={treasuresOpen[1] ? "open" : ""}
-            src="/assets/treasure.svg"
+            src={imgPath}
             alt="treasure"
             onClick={() =>
               treasuresOpen[1] ? alert("🎁➡H8") : alert("Pas assez d'épées...")
@@ -86,7 +90,7 @@ const Home = () => {
           />
           <img
             className={treasuresOpen[2] ? "open" : ""}
-            src="/assets/treasure.svg"
+            src={imgPath}
             alt="treasure"
             onClick={() =>
               treasuresOpen[2]

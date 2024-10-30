@@ -62,7 +62,14 @@ export const ProblemModal = () => {
           {problem.question.isQuizz &&
             problem.question.quizzItems?.map((item, ind) => (
               <div className="quizzItem">
-                <img src={"/assets/" + item.imagePath} alt={item.altText} />
+                <img
+                  src={
+                    import.meta.env.PROD
+                      ? "assets/" + item.imagePath
+                      : "/assets/" + item.imagePath
+                  }
+                  alt={item.altText}
+                />
                 <p>{ind + 1}</p>
               </div>
             ))}
