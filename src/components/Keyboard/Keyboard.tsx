@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Key from "../Key/Key";
+import styles from "./Keyboard.module.scss";
 
 type KeyboardProps = {
   handleSubmit: (code: number) => void;
@@ -23,14 +24,19 @@ const Keyboard = ({ handleSubmit }: KeyboardProps) => {
   };
 
   return (
-    <div className="keyboard">
+    <div className={styles.keyboard}>
       <input
-        className="display"
+        className={styles.display}
         value={currentValue}
         onChange={() => {}}
       ></input>
       {values.split("").map((v, i) => (
-        <Key value={v} key={i} handleKeyPressed={handleKeyPressed} />
+        <Key
+          area={"n" + i}
+          value={v}
+          key={i}
+          handleKeyPressed={handleKeyPressed}
+        />
       ))}
     </div>
   );

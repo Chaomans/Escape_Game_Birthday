@@ -3,6 +3,7 @@ import Keyboard from "../Keyboard/Keyboard";
 import { data } from "../../data/data";
 import { Answer, Problem, Question, Theme } from "../../utils/types";
 import { useEffect, useState } from "react";
+import styles from "./ProblemModal.module.scss";
 
 export const ProblemModal = () => {
   const { id } = useParams();
@@ -53,28 +54,34 @@ export const ProblemModal = () => {
   return (
     <>
       {problem && (
-        <div className="problem">
-          <p className="question">{problem.question.text}</p>
+        <div className={isSolved ? styles.problemSolved : styles.problem}>
+          <p className={styles.question}>{problem.question.text}</p>
           {problem.question.isSong &&
             problem.question.songText?.map((line, ind) => (
-              <p key={ind}>{line}</p>
+              <p className={styles.songText} key={ind}>
+                {line}
+              </p>
             ))}
-          {problem.question.isQuizz &&
-            problem.question.quizzItems?.map((item, ind) => (
-              <div className="quizzItem">
-                <img
-                  src={
-                    import.meta.env.PROD
-                      ? "assets/" + item.imagePath
-                      : "/assets/" + item.imagePath
-                  }
-                  alt={item.altText}
-                />
-                <p>{ind + 1}</p>
-              </div>
-            ))}
+          {problem.question.isQuizz && (
+            <div className={styles.items}>
+              {problem.question.quizzItems?.map((item, ind) => (
+                <div className={styles.quizzItem}>
+                  <img
+                    className={styles.img}
+                    src={"../assets/" + item.imagePath}
+                    alt={item.altText}
+                  />
+                  <p className={styles.p}>{ind + 1}</p>
+                </div>
+              ))}
+            </div>
+          )}
           {!isSolved && <Keyboard handleSubmit={handleSubmit} />}
-          <button onClick={() => navigate("/")}>Close</button>
+          <div className={styles.buttonDiv}>
+            <button className={styles.button} onClick={() => navigate("/")}>
+              Fermer
+            </button>
+          </div>
         </div>
       )}
       {!problem && <div className="NotFound">NO</div>}

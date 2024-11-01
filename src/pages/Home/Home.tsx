@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import Timer from "../../components/Timer/Timer";
 import { data } from "../../data/data";
 import { useEffect, useState } from "react";
+import styles from "./Home.module.scss";
 
 const Home = () => {
   const location = useLocation();
@@ -43,6 +44,15 @@ const Home = () => {
     ? "assets/treasure.svg"
     : "/assets/treasure.svg";
 
+  const isSolved = (id: number) => {
+    const solved: string[] = JSON.parse(
+      localStorage.getItem("solvedIDs") ?? "[]"
+    );
+    if (solved !== null) {
+      return solved.findIndex((elem) => elem === "" + id) === -1 ? false : true;
+    }
+  };
+
   useEffect(() => {
     document.addEventListener("checkTreasures", (e: Event) => {
       e.preventDefault();
@@ -58,20 +68,23 @@ const Home = () => {
   });
   return (
     <>
-      {shuffled.map((id) => (
-        <Link
-          to={"/question/" + (id + 1)}
-          state={{ background: location }}
-          key={id}
-        >
-          {getThemeIcon(id)}
-        </Link>
-      ))}
+      <div className={styles.buttons}>
+        {shuffled.map((id) => (
+          <Link
+            to={"/question/" + (id + 1)}
+            state={{ background: location }}
+            key={id}
+            className={isSolved(id) ? styles.buttonSolved : styles.button}
+          >
+            {getThemeIcon(id)}
+          </Link>
+        ))}
+      </div>
       <Timer limit={120} />
       {treasuresOpen && (
-        <div className="treasures">
+        <div className={styles.treasures}>
           <img
-            className={treasuresOpen[0] ? "open" : ""}
+            className={treasuresOpen[0] ? styles.open : styles.close}
             src={imgPath}
             alt="treasure"
             onClick={() =>
@@ -81,7 +94,7 @@ const Home = () => {
             }
           />
           <img
-            className={treasuresOpen[1] ? "open" : ""}
+            className={treasuresOpen[1] ? styles.open : styles.close}
             src={imgPath}
             alt="treasure"
             onClick={() =>
@@ -89,7 +102,7 @@ const Home = () => {
             }
           />
           <img
-            className={treasuresOpen[2] ? "open" : ""}
+            className={treasuresOpen[2] ? styles.open : styles.close}
             src={imgPath}
             alt="treasure"
             onClick={() =>

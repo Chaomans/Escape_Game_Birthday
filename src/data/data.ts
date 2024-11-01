@@ -140,12 +140,12 @@ export const data: {
       theme_id: 1,
     },
     {
-      id: 2,
+      id: 3,
       code: 212521,
       theme_id: 1,
     },
     {
-      id: 3,
+      id: 2,
       code: 25224,
       theme_id: 1,
     },

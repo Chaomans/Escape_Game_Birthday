@@ -1,0 +1,42 @@
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  align-items: center;
+  row-gap: 15px;
+  margin: auto;
+
+  .button, .buttonSolved {
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    cursor: pointer;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    margin: auto;
+  }
+
+  .button {
+    background-color: #faf17a;
+  }
+
+  .buttonSolved {
+    background-color: $green;
+  }
+}
+
+.treasures {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  .close, .open {
+    width: 25%;
+    height: auto;
+  }
+
+  .close {
+    filter: grayscale(100%);
+  }
+}

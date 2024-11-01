@@ -1,0 +1,26 @@
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+
+  .h1 {
+    letter-spacing: 0.08rem;
+  }
+
+  .p {
+    font-style: italic;
+    font-weight: 200;
+    text-align: center;
+    width: 75%;
+  }
+
+}
+
+.main {
+  width: 95%;
+  background-color: #e09eff;
+  border-radius: 20px;
+  padding: 5%;
+  margin: 30px auto;
+}

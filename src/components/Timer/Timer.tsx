@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./Timer.module.scss";
 
 type TimerProps = {
   limit: number;
@@ -68,10 +69,16 @@ const Timer = ({ limit }: TimerProps) => {
   }
 
   return (
-    <div className="timer">
-      <p>{displayTime(lasted)}</p>
-      <button onClick={(e) => onSetTimerOn(e)}>Start</button>
-      <button onClick={() => onReset()}>Reset</button>
+    <div className={styles.timer}>
+      <p className={styles.time}>{displayTime(lasted)}</p>
+      <div className={styles.buttons}>
+        <button className={styles.button} onClick={(e) => onSetTimerOn(e)}>
+          Start
+        </button>
+        <button className={styles.button} onClick={() => onReset()}>
+          Reset
+        </button>
+      </div>
     </div>
   );
 };
